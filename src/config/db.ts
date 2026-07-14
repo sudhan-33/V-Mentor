@@ -22,6 +22,16 @@ export async function query<T = unknown>(
   return res.rows as T[];
 }
 
+/** Pings the database once (SELECT 1) to confirm connectivity on startup. */
+export async function verifyConnection(): Promise<void> {
+  const client = await pool.connect();
+  try {
+    await client.query("SELECT 1");
+  } finally {
+    client.release();
+  }
+}
+
 export async function closePool(): Promise<void> {
   await pool.end();
 }

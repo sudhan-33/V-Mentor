@@ -9,7 +9,7 @@ import {
   type LoginInput,
   type PublicUser,
   type RegisterInput,
-} from "@vmentor/shared";
+} from "../../shared/index.js";
 import { Conflict, Forbidden, NotFound, Unauthorized } from "../../common/errors.js";
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from "../../common/jwt.js";
 import { env } from "../../config/env.js";

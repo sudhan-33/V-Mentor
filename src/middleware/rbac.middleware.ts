@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-import type { UserRole } from "@vmentor/shared";
+import type { UserRole } from "../shared/index.js";
 import { Forbidden, Unauthorized } from "../common/errors.js";
 
 /** Restricts a route to one of the given roles. Use after `authenticate`. */

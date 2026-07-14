@@ -17,7 +17,7 @@ export function createApp(): Express {
   app.use(cookieParser());
   app.use(pinoHttp({ logger }));
 
-  app.use("/api/v1", apiRouter);
+  app.use("/api", apiRouter);
 
   app.use(notFound);
   app.use(errorHandler);

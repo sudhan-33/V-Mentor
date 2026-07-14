@@ -1,4 +1,4 @@
-import type { AuthProvider, PublicUser, UserRole, UserStatus } from "@vmentor/shared";
+import type { AuthProvider, PublicUser, UserRole, UserStatus } from "../../shared/index.js";
 
 /** Raw `users` row as returned by PostgreSQL (snake_case). */
 export interface UserRow {

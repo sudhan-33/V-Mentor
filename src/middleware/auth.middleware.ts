@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-import type { AuthTokenPayload } from "@vmentor/shared";
+import type { AuthTokenPayload } from "../shared/index.js";
 import { Unauthorized } from "../common/errors.js";
 import { verifyAccessToken } from "../common/jwt.js";
 
