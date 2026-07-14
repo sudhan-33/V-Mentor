@@ -2,16 +2,20 @@
 
 Mentor discovery & booking platform — backend API.
 
-This repository is an **npm-workspaces monorepo**:
+Layout:
 
 ```
 V-Mentor/
-├─ apps/
-│  └─ api/          # Express + TypeScript REST API
-├─ packages/
-│  └─ shared/       # Shared enums, types and zod DTOs
-├─ package.json     # workspace root + scripts
-└─ tsconfig.base.json
+├─ src/
+│  ├─ shared/       # Shared enums, types and zod DTOs
+│  ├─ common/       # Errors, JWT, HTTP helpers
+│  ├─ config/       # env, db, cors, logger
+│  ├─ db/           # SQL scripts + migrate runner
+│  ├─ middleware/   # auth, rbac, validation, errors
+│  ├─ modules/      # Feature modules (auth, users)
+│  └─ server.ts     # Express entrypoint
+├─ package.json
+└─ tsconfig.json
 ```
 
 ## Tech stack
@@ -89,7 +93,7 @@ The API validates these on startup and exits with a clear message if any are mis
 
 ### 4. Apply the database schema
 
-Runs the committed, idempotent SQL scripts in `apps/api/src/db/sql`:
+Runs the committed, idempotent SQL scripts in `src/db/sql`:
 
 ```bash
 npm run db:migrate
@@ -108,10 +112,11 @@ Verify with `GET http://localhost:4000/api/v1/health`.
 
 | Command | Description |
 |---|---|
-| `npm run dev:api` | Build shared package, then start the API in watch mode |
+| `npm run dev` | Start the API in watch mode (alias: `dev:api`) |
 | `npm run db:migrate` | Apply the SQL scripts (idempotent) |
-| `npm run build` | Compile all workspaces |
-| `npm run typecheck` | Type-check all workspaces |
+| `npm run build` | Compile to `dist/` |
+| `npm run start` | Run the compiled server (`dist/server.js`) |
+| `npm run typecheck` | Type-check without emitting |
 
 ## API endpoints
 

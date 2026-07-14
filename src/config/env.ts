@@ -1,9 +1,9 @@
 import dotenv from "dotenv";
 import { z } from "zod";
 
-// Load the monorepo-root .env (scripts run from apps/api, so ../../ is the root).
+// Load the repo-root .env (scripts run from the repo root).
 // Any real process env vars already set take precedence over the file.
-dotenv.config({ path: "../../.env" });
+dotenv.config();
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),

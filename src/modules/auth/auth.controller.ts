@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import type { LoginInput, RefreshInput, RegisterInput } from "@vmentor/shared";
+import type { LoginInput, RefreshInput, RegisterInput } from "../../shared/index.js";
 import { Unauthorized } from "../../common/errors.js";
 import { ok } from "../../common/http.js";
 import * as authService from "./auth.service.js";

@@ -2,24 +2,44 @@
   "name": "vmentor",
   "version": "0.1.0",
   "private": true,
-  "description": "VMentor — Mentor Discovery & Booking Platform (monorepo)",
+  "type": "module",
+  "description": "VMentor — Mentor Discovery & Booking Platform (backend API)",
+  "main": "dist/server.js",
   "engines": {
     "node": ">=20"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "build:shared": "npm run build -w @vmentor/shared",
-    "dev": "npm run build:shared && npm run dev -w @vmentor/api",
-    "dev:api": "npm run build:shared && npm run dev -w @vmentor/api",
-    "lint": "npm run lint --workspaces --if-present",
-    "typecheck": "npm run build:shared && npm run typecheck --workspaces --if-present",
-    "db:migrate": "npm run migrate -w @vmentor/api"
+    "dev": "tsx watch src/server.ts",
+    "dev:api": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src",
+    "db:migrate": "tsx src/db/migrate.ts"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.12.0",
+    "pino": "^9.3.2",
+    "pino-http": "^10.2.0",
+    "pino-pretty": "^11.2.2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.14.12",
+    "@types/pg": "^8.11.6",
+    "tsx": "^4.16.2",
     "typescript": "^5.5.4"
   }
 }

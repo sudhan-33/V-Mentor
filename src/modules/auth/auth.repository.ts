@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import type { PoolClient } from "pg";
 import { pool, query } from "../../config/db.js";
-import { AuthTokenType, UserRole } from "@vmentor/shared";
+import { AuthTokenType, UserRole } from "../../shared/index.js";
 
 export const hashToken = (raw: string): string =>
   createHash("sha256").update(raw).digest("hex");

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import type { AuthTokenPayload } from "@vmentor/shared";
+import type { AuthTokenPayload } from "../shared/index.js";
 import { env } from "../config/env.js";
 
 export function signAccessToken(payload: AuthTokenPayload): string {

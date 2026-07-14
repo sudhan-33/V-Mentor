@@ -1,6 +1,6 @@
 import type { PoolClient } from "pg";
 import { pool, query } from "../../config/db.js";
-import type { UserRole, UserStatus } from "@vmentor/shared";
+import type { UserRole, UserStatus } from "../../shared/index.js";
 import type { UserRow } from "./users.types.js";
 
 const COLUMNS = `
