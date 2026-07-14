@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { authRouter } from "./modules/auth/index.js";
 
-/** Aggregates every module router under /api/v1. New modules mount here. */
+/** Aggregates every module router under /api. New modules mount here. */
 export const apiRouter: Router = Router();
 
 apiRouter.get("/health", (_req, res) => {

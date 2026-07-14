@@ -105,8 +105,8 @@ npm run db:migrate
 npm run dev:api
 ```
 
-The API runs at `http://localhost:4000/api/v1` (watch mode — restarts on changes).
-Verify with `GET http://localhost:4000/api/v1/health`.
+The API runs at `http://localhost:4000/api` (watch mode — restarts on changes).
+Verify with `GET http://localhost:4000/api/health`.
 
 ## Scripts (run from the repo root)
 
@@ -120,7 +120,7 @@ Verify with `GET http://localhost:4000/api/v1/health`.
 
 ## API endpoints
 
-Base URL: `http://localhost:4000/api/v1`
+Base URL: `http://localhost:4000/api`
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
