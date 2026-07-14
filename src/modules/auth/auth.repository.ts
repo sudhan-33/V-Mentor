@@ -1,7 +1,10 @@
 import { createHash } from "node:crypto";
 import type { PoolClient } from "pg";
-import { pool, query } from "../../config/db.js";
+import { query } from "../../config/db.js";
 import { AuthTokenType, UserRole } from "../../shared/index.js";
+
+// Re-exported so existing callers (auth.service) keep importing it from here.
+export { withTransaction } from "../../config/db.js";
 
 export const hashToken = (raw: string): string =>
   createHash("sha256").update(raw).digest("hex");
@@ -18,24 +21,6 @@ export async function createRoleProfile(
     await client.query("INSERT INTO mentor_profiles (user_id) VALUES ($1)", [userId]);
   }
   // admins have no extra profile table
-}
-
-/** Run a function inside a DB transaction, committing on success. */
-export async function withTransaction<T>(
-  fn: (client: PoolClient) => Promise<T>,
-): Promise<T> {
-  const client = await pool.connect();
-  try {
-    await client.query("BEGIN");
-    const result = await fn(client);
-    await client.query("COMMIT");
-    return result;
-  } catch (err) {
-    await client.query("ROLLBACK");
-    throw err;
-  } finally {
-    client.release();
-  }
 }
 
 export async function storeRefreshToken(
